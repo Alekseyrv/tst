@@ -1,0 +1,36 @@
+.reviews {
+    width: 808px;
+    padding-right: 32px;
+    box-sizing: border-box;
+
+    & .reviews__content {
+        display: flex;
+        justify-content: space-between;
+
+        flex-wrap: wrap;
+
+        & .reviews-item {
+            width: 372px;
+            margin-bottom: 37px;
+            & .reviews-item__image {
+                margin-bottom: 20px;
+            }
+            & img {
+            width: 372px;
+            height: 202px;
+            }
+            & .reviews-item__text{
+                & h4 {
+                    font-size: 23px;
+                    margin-bottom: 11px;
+                }
+                & h5 {
+                    font-size: 14px;
+                    font-weight: normal;
+                    line-height: 21px;
+                }
+            }
+        }
+    }
+
+}
