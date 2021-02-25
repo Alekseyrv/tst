@@ -198,8 +198,7 @@ a {
 		height: 180px;
 
 		& img {
-			width: 776px;
-			height: 180px;
+	
 			}
 	} 
 
@@ -253,6 +252,8 @@ a {
 		margin-bottom: 100px;
 		& .slide {
 			position: relative;
+			animation: show 1s ease;
+			animation-delay: 1s;
 		}
 		& .slide__container {
 			position: absolute;
@@ -297,5 +298,13 @@ a {
 			}
 		}
 	}
+}
 
+@keyframe show {
+	from:{ 
+	opacity: 0;
+	}
+	to:{
+	opacity: .5;
+	}
 }
