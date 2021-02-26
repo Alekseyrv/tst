@@ -105,20 +105,87 @@
             </div>     
         </section>
         <section class="pagination">
-            <a class="pagination__left-arrow" href="#"></a>
+            <a class="pagination__left-arrow" href="javascript:void(0)"></a>
             <div class="pagination__wrapper">
                 <ul class="pagination-list">
-                    <li><a class="active" href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">...</a></li>
-                    <li><a href="#">35</a></li>
+                    <li class="page active"><a class="active" href="javascript:void(0)">1</a></li>
+                    <li class="page"><a href="javascript:void(0)">2</a></li>
+                    <li class="page"><a href="javascript:void(0)">3</a></li>
+                    <li class="page"><a href="javascript:void(0)">4</a></li>
+                    <li class="page"><a href="javascript:void(0)">5</a></li>
+                    <li class="page morenext"><a href="javascript:void(0)">...</a></li>
+                    <li class="page total"><a href="javascript:void(0)">35</a></li>
                 </ul>
             </div> 
-            <a class="pagination__right-arrow" href="#"></a>
+            <a class="pagination__right-arrow" href="javascript:void(0)"></a>
         </section>
+        <script>
+           let rightArrow = document.querySelector('.pagination__right-arrow')
+           let leftArrow = document.querySelector('.pagination__left-arrow')
+           let pages = document.querySelectorAll('.page')
+           let moreNext = document.querySelector('.page.morenext')
+           let lastPage = +document.querySelector('.morenext').previousElementSibling.innerText
+           let totalPagesNext = document.querySelector('.page.total')
+           //let totalPages = document.querySelector('.page.total>a').innerText; 
+          // let divider = totalPages / lastPage
+           //console.log(totalPages)
+          // pages.forEach(el => { 
+             //  if ( !(el.classList.contains('more')) && !(el.classList.contains('total'))) {
+              // console.log(el.innerHTML)
+              //  }
+            //}
+          // )
+          function rightSiblings (currentPage, totalPagesNumNext, lastPage){
+            let nextPage = currentPage.nextElementSibling
+                if ( !(nextPage.classList.contains('morenext')) ) {
+                currentPage.classList.remove('active')   
+                nextPage.classList.add('active')  
+                //totalPagesNumNext--    
+                } else {
+                    
+                   // if (totalPagesNumNext >=1 ) {
+                        //totalPagesNumNextRelevant =  - lastPage //(минусуем то что уже показано изначально)
+                       // document.querySelector('.page.total>a').innerHTML = totalPagesNumNext - 1  //30-1 
+                      //  console.log(totalPagesNumNext)
+                        //let nums = []
+                        for (let value of pages) {
+                             if (value.classList.contains('morenext')) { break; } // 1 2 3 4 5
+                                value.querySelector('a').innerText = +value.innerText + 1 
+                        }
+
+
+                   // } if ( totalPagesNumNext == 1) { //hack
+                  //      moreNext.style.display= 'none'
+                 //       totalPagesNext.style.display= 'none'
+                 //       console.log(totalPagesNext)
+                //    }
+                
+
+
+
+
+
+                    
+                }
+            }
+           function leftSiblings (currentPage,totalPagesNumNext, morePages){      
+              let prevPage = currentPage.previousElementSibling
+              if (prevPage == !null ) {
+                    currentPage.classList.remove('active')
+                    prevPage.classList.add('active')
+                }
+            }
+
+
+                rightArrow.addEventListener('click', function (e){
+                    rightSiblings(document.querySelector('.page.active'), +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.morenext').previousElementSibling.innerText)
+                })
+
+               leftArrow.addEventListener('click', function(e){
+                   leftSiblings(document.querySelector('.page.active'), +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.more').previousElementSibling.innerText )
+               })
+
+        </script>
         <div class="news-footer">
             <div class="news-footer__image">
                 <img src="../build/img/dv.jpg" alt="Ох, уж этот балет">
@@ -335,7 +402,19 @@ function previousSlide() {
 	//console.warn(counter)
 	console.log (arrCounter[0] +' ' +arrCounter[1])
 }
+let list = document.querySelector('.pagination-list')
+var s = list.querySelectorAll('li>a');
+s.forEach(el => el.addEventListener('click', function(e){ 
+         console.log(el)
+         list.querySelector('li>a.active').classList.remove('active');
+         el.classList.add('active');
+
+}
+ )         // e.target.addClass('active')
+)
 
 </script>
 </body>
 </html>
+
+
