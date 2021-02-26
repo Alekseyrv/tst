@@ -252,8 +252,11 @@ a {
 		margin-bottom: 100px;
 		& .slide {
 			position: relative;
-			animation: show 1s ease;
-			animation-delay: 1s;
+			animation: show 0.3s ease;
+			&:hover {
+	
+			}
+
 		}
 		& .slide__container {
 			position: absolute;
@@ -300,11 +303,13 @@ a {
 	}
 }
 
-@keyframe show {
-	from:{ 
+@keyframes show {
+	from{ 
 	opacity: 0;
 	}
-	to:{
-	opacity: .5;
+	to{
+	opacity: 1;
 	}
 }
+
+
