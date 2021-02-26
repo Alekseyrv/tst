@@ -108,13 +108,15 @@
             <a class="pagination__left-arrow" href="javascript:void(0)"></a>
             <div class="pagination__wrapper">
                 <ul class="pagination-list">
-                    <li class="page active"><a class="active" href="javascript:void(0)">1</a></li>
-                    <li class="page"><a href="javascript:void(0)">2</a></li>
-                    <li class="page"><a href="javascript:void(0)">3</a></li>
-                    <li class="page"><a href="javascript:void(0)">4</a></li>
-                    <li class="page"><a href="javascript:void(0)">5</a></li>
+                    <li class="page first"><a href="javascript:void(0)">1</a></li>
+                    <li class="page moreprev"><a href="javascript:void(0)">...</a></li>
+                    <li class="page pageindex active"><a class="active" href="javascript:void(0)">1</a></li>
+                    <li class="page pageindex "><a href="javascript:void(0)">2</a></li>
+                    <li class="page pageindex "><a href="javascript:void(0)">3</a></li>
+                    <li class="page pageindex "><a href="javascript:void(0)">4</a></li>
+                    <li class="page pageindex "><a href="javascript:void(0)">5</a></li>
                     <li class="page morenext"><a href="javascript:void(0)">...</a></li>
-                    <li class="page total"><a href="javascript:void(0)">35</a></li>
+                    <li class="page total"><a href="javascript:void(0)">15</a></li>
                 </ul>
             </div> 
             <a class="pagination__right-arrow" href="javascript:void(0)"></a>
@@ -122,10 +124,12 @@
         <script>
            let rightArrow = document.querySelector('.pagination__right-arrow')
            let leftArrow = document.querySelector('.pagination__left-arrow')
-           let pages = document.querySelectorAll('.page')
+           let pages = document.querySelectorAll('.pageindex')
            let moreNext = document.querySelector('.page.morenext')
-           let lastPage = +document.querySelector('.morenext').previousElementSibling.innerText
+           let morePrev = document.querySelector('.page.moreprev')
+         //  let lastPage = +document.querySelector('.morenext').previousElementSibling.innerText
            let totalPagesNext = document.querySelector('.page.total')
+           let totalPagesPrev = document.querySelector('.page.first')
            //let totalPages = document.querySelector('.page.total>a').innerText; 
           // let divider = totalPages / lastPage
            //console.log(totalPages)
@@ -135,55 +139,91 @@
               //  }
             //}
           // )
-          function rightSiblings (currentPage, totalPagesNumNext, lastPage){
+          function rightSiblings (currentPage, totalPagesNumPrev, totalPagesNumNext, lastPage){
             let nextPage = currentPage.nextElementSibling
+       
                 if ( !(nextPage.classList.contains('morenext')) ) {
-                currentPage.classList.remove('active')   
-                nextPage.classList.add('active')  
-                //totalPagesNumNext--    
+                    currentPage.classList.remove('active')   
+                    nextPage.classList.add('active')     
                 } else {
-                    
-                   // if (totalPagesNumNext >=1 ) {
-                        //totalPagesNumNextRelevant =  - lastPage //(минусуем то что уже показано изначально)
-                       // document.querySelector('.page.total>a').innerHTML = totalPagesNumNext - 1  //30-1 
-                      //  console.log(totalPagesNumNext)
-                        //let nums = []
+ 
+                    if (lastPage < (totalPagesNumNext) ){
+
                         for (let value of pages) {
-                             if (value.classList.contains('morenext')) { break; } // 1 2 3 4 5
-                                value.querySelector('a').innerText = +value.innerText + 1 
+
+                            //if (value.classList.contains('morenext')  ) { break; }  //|| (value.classList.contains('moreprev')
+                           // if (value.classList.contains('moreprev')) { break; }// 1 2 3 4 5
+                                let newValue =  +value.innerText + 1  
+                                value.querySelector('a').innerText = newValue 
+                            
+                            if (newValue == (totalPagesNumNext - 1 )) {
+                                moreNext.style.display = 'none'
+
+                                }
+                            if ((newValue  == (+totalPagesNumNext))) { 
+                                totalPagesNext.style.display = 'none'                              
+                            }
                         }
-
-
-                   // } if ( totalPagesNumNext == 1) { //hack
-                  //      moreNext.style.display= 'none'
-                 //       totalPagesNext.style.display= 'none'
-                 //       console.log(totalPagesNext)
-                //    }
-                
-
-
-
-
-
-                    
+                    } 
                 }
             }
-           function leftSiblings (currentPage,totalPagesNumNext, morePages){      
+
+           function leftSiblings (currentPage, totalPagesNumPrev, totalPagesNumNext, firstPage){      
               let prevPage = currentPage.previousElementSibling
-              if (prevPage == !null ) {
+              
+               if ( !(prevPage.classList.contains('moreprev')) ) {
                     currentPage.classList.remove('active')
                     prevPage.classList.add('active')
+                }  else {
+ 
+                    if (firstPage > (totalPagesNumPrev) ){ //пока firstPage > 1
+                        for (let value of pages) {
+                           // if (value.classList.contains('moreprev')) { break; } // 1 2 3 4 5
+                                let newValue =  +value.innerText - 1  
+                                value.querySelector('a').innerText = newValue 
+                                console.log(morePrev.previousElementSibling.innerText + ' '+ totalPagesNumPrev)
+
+                                
+                                console.log(newValue)
+                                if ( (totalPagesNumNext - moreNext.previousElementSibling.innerText) > 1) { //добавление max
+                                    moreNext.style.display = 'inline'
+                                    totalPagesNext.style.display = 'inline'
+                                }
+
+                                if ( (totalPagesNumNext - moreNext.previousElementSibling.innerText) == 0) { //добавление '...'
+                                    totalPagesNext.style.display = 'inline' 
+                                }
+
+                                if ( ( morePrev.previousElementSibling.innerText - totalPagesNumPrev) > 1) { //добавление min
+                                    morePrev.style.display = 'inline'
+                                    totalPagesPrev.style.display = 'inline'
+                                }
+
+                                if ( (totalPagesNumPrev- morePrev.previousElementSibling.innerText) == 0) { //добавление '...'
+                                    totalPagesPrev.style.display = 'none' 
+                                }
+
+
+        
+                                if (newValue == (totalPagesNumPrev + 1)) {
+                                    // moreNext.style.display = 'none'
+
+                                }
+                                if ((newValue  == (+totalPagesNumPrev))) { 
+                                    // totalPagesNext.style.display = 'none'                              
+                            }
+                        }
+                    } 
                 }
             }
 
+            rightArrow.addEventListener('click', function (e){
+                rightSiblings(document.querySelector('.page.active'), +document.querySelector('.page.first>a').innerHTML, +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.morenext').previousElementSibling.innerText)
+            })
 
-                rightArrow.addEventListener('click', function (e){
-                    rightSiblings(document.querySelector('.page.active'), +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.morenext').previousElementSibling.innerText)
-                })
-
-               leftArrow.addEventListener('click', function(e){
-                   leftSiblings(document.querySelector('.page.active'), +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.more').previousElementSibling.innerText )
-               })
+           leftArrow.addEventListener('click', function(e){
+               leftSiblings(document.querySelector('.page.active'), +document.querySelector('.page.first>a').innerHTML, +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.moreprev').nextElementSibling.innerText )
+           })
 
         </script>
         <div class="news-footer">
