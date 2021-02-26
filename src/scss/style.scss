@@ -109,7 +109,9 @@ a {
 					font-size: 15px;
 
 				}
-				& .active {
+				
+			}
+			& .active > a{
 					position: relative;
 					color: $color_black;
 					padding-bottom: 11px;
@@ -118,7 +120,7 @@ a {
 					line-height: 14px;
 
 				}
-				& .active:after {
+				& .active > a:after {
 					content: '';
 					position: absolute;
 					width: 13px;
@@ -127,7 +129,6 @@ a {
 					left: 11px;
 					background-color: $color_orange;
 				}
-			}
 		}
 	}
 }
