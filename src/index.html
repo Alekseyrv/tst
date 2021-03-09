@@ -66,7 +66,7 @@
             <div class="reviews__content">
                 <a href="#" class="reviews-item" title ="">
                     <div class="reviews-item__image">
-                        <img src="../build/img/1st.jpg" alt="памятник Евгению Леонову">
+                        <img src="../build/img/1.jpg" alt="памятник Евгению Леонову">
                     </div>
                     <article class="reviews-item__text">
                         <h4>«Шальные годы» Монпарнаса</h4>
@@ -74,7 +74,7 @@
                     </article>
                     <a href="#" class="reviews-item" title ="">
                         <div class="reviews-item__image">
-                            <img src="../build/img/2d.jpg" alt="памятник Евгению Леонову">
+                            <img src="../build/img/2.jpg" alt="памятник Евгению Леонову">
                         </div>
                         <article class="reviews-item__text">
                             <h4>Анатомия за 30 секунд</h4>
@@ -82,10 +82,10 @@
                                 и его познавательных изысканий, интерес 
                                 к научно-популярной литературе заметно вырос</h5>
                         </article>
-                    </a>
+                </a>
                     <a href="#" class="reviews-item" title ="">
                         <div class="reviews-item__image">
-                            <img src="../build/img/3d.jpg" alt="памятник Евгению Леонову">
+                            <img src="../build/img/3.jpg" alt="памятник Евгению Леонову">
                         </div>
                         <article class="reviews-item__text">
                             <h4>«Шальные годы» Монпарнаса</h4>
@@ -94,7 +94,7 @@
                     </a>
                     <a href="#" class="reviews-item" title ="">
                         <div class="reviews-item__image">
-                            <img src="../build/img/4th.jpg" alt="памятник Евгению Леонову">
+                            <img src="../build/img/4.jpg" alt="памятник Евгению Леонову">
                         </div>
                         <article class="reviews-item__text">
                             <h4>«Шальные годы» Монпарнаса</h4>
@@ -107,125 +107,20 @@
         <section class="pagination">
             <a class="pagination__left-arrow" href="javascript:void(0)"></a>
             <div class="pagination__wrapper">
-                <ul class="pagination-list">
-                    <li class="page first"><a href="javascript:void(0)">1</a></li>
-                    <li class="page moreprev"><a href="javascript:void(0)">...</a></li>
+                <ul class="pagination-list"></ul>
+            </div> 
+            <a class="pagination__right-arrow" href="javascript:void(0)"></a>
+        </section>
+                    <!--<li class="page first"><a href="javascript:void(0)">1</a></li>
+                    <li class="moreprev"><a href="javascript:void(0)">...</a></li>
                     <li class="page pageindex active"><a class="active" href="javascript:void(0)">1</a></li>
                     <li class="page pageindex "><a href="javascript:void(0)">2</a></li>
                     <li class="page pageindex "><a href="javascript:void(0)">3</a></li>
                     <li class="page pageindex "><a href="javascript:void(0)">4</a></li>
                     <li class="page pageindex "><a href="javascript:void(0)">5</a></li>
-                    <li class="page morenext"><a href="javascript:void(0)">...</a></li>
-                    <li class="page total"><a href="javascript:void(0)">15</a></li>
-                </ul>
-            </div> 
-            <a class="pagination__right-arrow" href="javascript:void(0)"></a>
-        </section>
-        <script>
-           let rightArrow = document.querySelector('.pagination__right-arrow')
-           let leftArrow = document.querySelector('.pagination__left-arrow')
-           let pages = document.querySelectorAll('.pageindex')
-           let moreNext = document.querySelector('.page.morenext')
-           let morePrev = document.querySelector('.page.moreprev')
-         //  let lastPage = +document.querySelector('.morenext').previousElementSibling.innerText
-           let totalPagesNext = document.querySelector('.page.total')
-           let totalPagesPrev = document.querySelector('.page.first')
-           //let totalPages = document.querySelector('.page.total>a').innerText; 
-          // let divider = totalPages / lastPage
-           //console.log(totalPages)
-          // pages.forEach(el => { 
-             //  if ( !(el.classList.contains('more')) && !(el.classList.contains('total'))) {
-              // console.log(el.innerHTML)
-              //  }
-            //}
-          // )
-          function rightSiblings (currentPage, totalPagesNumPrev, totalPagesNumNext, lastPage){
-            let nextPage = currentPage.nextElementSibling
-       
-                if ( !(nextPage.classList.contains('morenext')) ) {
-                    currentPage.classList.remove('active')   
-                    nextPage.classList.add('active')     
-                } else {
- 
-                    if (lastPage < (totalPagesNumNext) ){
+                    <li class="morenext"><a href="javascript:void(0)">...</a></li>
+                    <li class="page total"><a href="javascript:void(0)">15</a></li>-->
 
-                        for (let value of pages) {
-
-                            //if (value.classList.contains('morenext')  ) { break; }  //|| (value.classList.contains('moreprev')
-                           // if (value.classList.contains('moreprev')) { break; }// 1 2 3 4 5
-                                let newValue =  +value.innerText + 1  
-                                value.querySelector('a').innerText = newValue 
-                            
-                            if (newValue == (totalPagesNumNext - 1 )) {
-                                moreNext.style.display = 'none'
-
-                                }
-                            if ((newValue  == (+totalPagesNumNext))) { 
-                                totalPagesNext.style.display = 'none'                              
-                            }
-                        }
-                    } 
-                }
-            }
-
-           function leftSiblings (currentPage, totalPagesNumPrev, totalPagesNumNext, firstPage){      
-              let prevPage = currentPage.previousElementSibling
-              
-               if ( !(prevPage.classList.contains('moreprev')) ) {
-                    currentPage.classList.remove('active')
-                    prevPage.classList.add('active')
-                }  else {
- 
-                    if (firstPage > (totalPagesNumPrev) ){ //пока firstPage > 1
-                        for (let value of pages) {
-                           // if (value.classList.contains('moreprev')) { break; } // 1 2 3 4 5
-                                let newValue =  +value.innerText - 1  
-                                value.querySelector('a').innerText = newValue 
-                                console.log(morePrev.previousElementSibling.innerText + ' '+ totalPagesNumPrev)
-
-                                
-                                console.log(newValue)
-                                if ( (totalPagesNumNext - moreNext.previousElementSibling.innerText) > 1) { //добавление max
-                                    moreNext.style.display = 'inline'
-                                    totalPagesNext.style.display = 'inline'
-                                }
-
-                                if ( (totalPagesNumNext - moreNext.previousElementSibling.innerText) == 0) { //добавление '...'
-                                    totalPagesNext.style.display = 'inline' 
-                                }
-
-                                if ( ( morePrev.previousElementSibling.innerText - totalPagesNumPrev) > 1) { //добавление min
-                                    morePrev.style.display = 'inline'
-                                    totalPagesPrev.style.display = 'inline'
-                                }
-
-                                if ( (totalPagesNumPrev- morePrev.previousElementSibling.innerText) == 0) { //добавление '...'
-                                    totalPagesPrev.style.display = 'none' 
-                                }
-
-
-        
-                                if (newValue == (totalPagesNumPrev + 1)) {
-                                    // moreNext.style.display = 'none'
-
-                                }
-                                if ((newValue  == (+totalPagesNumPrev))) { 
-                                    // totalPagesNext.style.display = 'none'                              
-                            }
-                        }
-                    } 
-                }
-            }
-
-            rightArrow.addEventListener('click', function (e){
-                rightSiblings(document.querySelector('.page.active'), +document.querySelector('.page.first>a').innerHTML, +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.morenext').previousElementSibling.innerText)
-            })
-
-           leftArrow.addEventListener('click', function(e){
-               leftSiblings(document.querySelector('.page.active'), +document.querySelector('.page.first>a').innerHTML, +document.querySelector('.page.total>a').innerHTML, document.querySelector('.page.moreprev').nextElementSibling.innerText )
-           })
-
-        </script>
         <div class="news-footer">
             <div class="news-footer__image">
                 <img src="../build/img/dv.jpg" alt="Ох, уж этот балет">
@@ -272,134 +167,260 @@
  
         </section>
     </div>
-  <!-- <script type="text/javascript">
-let arr = [];
-let slides = document.getElementsByClassName("slide");
-			
-for (var i = 0; i < slides.length; i++) {
-	arr.push(slides[i])
-} //получаем массив всех слайдов [0,1,2,3]
+    <script>
 
-    	/* Устанавливаем стартовый индекс слайда по умолчанию: */
-let slidesToShow = 4; //устанавливаем число слайдов для показа
-let slidesToScroll = 1; //устанавливаем число слайдов для скролла
+        let news = [
+        {title: '«Шальные годы» Монпарнаса', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '1.jpg'},
+            {title: 'Анатомия за 30 секунд', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '2.jpg'},
+            {title: 'Русские балетные сезоны ', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '3.jpg'},
+            {title: 'Сферические чудаки', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '4.jpg'},
+            {title: '«Шальные годы» Монпарнаса', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '4.jpg'},
+            {title: 'Заголовок новости', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '2.jpg'},
+            {title: 'Какой-то текст', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '3.jpg'},
+            {title: 'Что-то на русском', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '1.jpg'},
+            {title: 'Картинка и текст к ней', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '2.jpg'},
+            {title: 'Lorem Ipsum', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '3.jpg'},
+            {title: 'Съешь еще этих мягких булок', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '4.jpg'},
+            {title: 'Сферические чудаки', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '4.jpg'},
+            {title: 'Random text', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '1.jpg'},
+            {title: 'Громкий заголовок', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '1.jpg'},
+            {title: 'Еще более громкий заголовок', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '1.jpg'},
+            {title: 'Желтая пресса реомендует', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '1.jpg'},
+            {title: 'На Марсе найдена вода', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '2.jpg'},
+            {title: 'На Марсе нет воды', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '1.jpg'},
+            {title: 'Россия совместно с Китаем построит лунную базу', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '3.jpg'},
+            {title: 'Гороскоп на 3000 год', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '4.jpg'},
+            {title: 'Random text again', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '1.jpg'},
+            {title: 'Еще что-то о чем-то', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '3.jpg'},
+            {title: 'Русские балетные сезоны ', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '4.jpg'},
+            {title: 'Местные новости', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '1.jpg'},
+            {title: 'Коронавирус - обычный грипп?', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '2.jpg'},
+            {title: 'Интригующий заголовок', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '3.jpg'},
+            {title: 'Интригующий заголовок №2', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '4.jpg'},
+            {title: 'Интригующий заголовок №3', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '3.jpg'},
+            {title: 'Интригующий заголовок №4', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '2.jpg'},
+            {title: 'Новости биржи', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '1.jpg'},
+            {title: 'Индекс NASDAQ бьет рекорды', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '2.jpg'},
+            {title: 'Акции SpaceX бьют рекорды', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '4.jpg'},
+            {title: 'FACEBOOK продает все активы', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '1.jpg'},
+            {title: 'SOME RANDOM TEXT™', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '2.jpg'},
+            {title: 'Еще немного текста', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '3.jpg'},
+            {title: 'Очередные новости', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '4.jpg'},
+            {title: 'Уилл Смит будет баллотироваться на пост президента', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '1.jpg'},
+            {title: 'Уилл Смит не будет баллотироваться на пост президента', subtitle: 'Сейчас, когда мир открыт нараспашку для человека и его познавательных изысканий, интерес к научно-популярной литературе заметно вырос', img: '2.jpg'},
+            {title: 'Что где когда, новый сезон', subtitle: 'В Новом Иерусалиме стартовал необычный культурно-развлекательный спектакль, который покажут в новом театре', img: '3.jpg'},
+            {title: 'Что где когда, старый сезон', subtitle: 'Корреспондентам «Культурного обозревателя» посчастливилось побывать в театре «Сфера» на премьере спектакля «Чудаки и зануды» ', img: '4.jpg'},
+            {title: 'Что где когда, какой-то сезон', subtitle: 'В Музее изобразительных искусств имени Пушкина с 29 сентября по 29 ноября проходит выставка «Шальные годы Монпарнаса»', img: '1.jpg'},
+            ]
+        
+        function paginationCustom(wrap, pagesToShow, newsToShow, arr){
+        
+        let items = []
+        let pages = Math.ceil(arr.length / newsToShow);
+        let currentPage = 1;
+        let ul = document.querySelector(wrap)
+        let prevIndex = document.createElement('li')
+        prevIndex.innerHTML = '1'
+        let dots_left = document.createElement('li')
+        dots_left.innerHTML = '...'
+        let dots_right = document.createElement('li')
+        dots_right.innerHTML = '...'
+        let nextIndex = document.createElement('li')
+        nextIndex.innerHTML = pages
+        
+        function setStart() {
+            items = []
+                //создаем начальный массив
+            for(let i = 1; i < pages; i++) {
+                if(i <= pagesToShow) {
+                    var element = i
+                    items.push(element)
+                }
+            } //end for
+            items.forEach(value => {
+                    var li = document.createElement('li')
+                    li.innerHTML = value 
+                    ul.append(li)
+                })
+            currentPage = 1
+            ul.append(dots_right)
+            ul.append(nextIndex)
+            showContent(currentPage)
+        }
+        
+        
+        setStart()
+        let myArray = Array.from(ul.childNodes)
+        ul.firstChild.classList.add('active')
+        ul.addEventListener('click', (e) => {
+            if(e.target !== ul && !isNaN(e.target.innerHTML) && !e.target.classList.contains('.active')) {
+                ul.querySelector('.active').classList.remove('active')
+                e.target.classList.add('active')
+                currentPage = e.target.innerHTML
+                showContent(currentPage)
+                //let currentEl = ul.querySelector('.active')
+                if(items[items.length - 1] - currentPage == 0 && items[items.length - 1] < pages) { // right nums +1  
+                    items.forEach((i,value) => {
+                        console.log(i , value)
+                            items[value]++
+                                myArray[value].innerHTML = items[value]
+                        }) //end foreach
+                    e.target.classList.remove('active')
+                    e.target.previousElementSibling.classList.add('active') 
+                } else if(items[0] - currentPage == 0 && items[0] > 1) { // left nums +1
+                    items.forEach((i,value) => {
+                            items[value]--
+                                myArray[value].innerHTML = items[value]
+                        }) //end foreach
+                    e.target.classList.remove('active')
+                    e.target.nextElementSibling.classList.add('active') // if prev not null
+                } else if(e.target.innerHTML == pages) {
+                    items = []
+                    var pagesStartFrom = pages - pagesToShow+ 1 // pages start from 
+                    for(let i = pagesStartFrom; i <= pages; i++) { 
+                        items.push(i)
+                    } //end for
+                    ul.innerHTML = ''
+                    items.forEach((i,value) => { 
+                        var li = document.createElement('li')
+                        li.innerHTML = i
+                        ul.append(li)
+                    })
+                    currentPage = pages
+                    myArray = Array.from(ul.childNodes)
+                } else if(e.target.innerHTML == 1) { // click firstchild (1)
+                    items = []
+                    var pagesStartFrom = 1 // pages start from 1st
+                    for(let i = pagesStartFrom; i <= pagesToShow; i++) { 
+                        items.push(i)
+                    } //end for
+                    ul.innerHTML = ''
+                    items.forEach((i,value) => {
+                        let li = document.createElement('li')
+                        li.innerHTML = i
+                        ul.append(li)
+                    })
+                    currentPage = 1
+                    myArray = Array.from(ul.childNodes)
+                }
+                setHelpers()
+            } //end if
+        })
+        
+        function setHelpers() {
+            let leftside = items[0] - 1
+            let rightside = pages - items[items.length - 1]
+                //console.log(' left side: ' +leftside + 'rightside: ' + rightside)
+            if(leftside == 0 && rightside >= 2) {
+                prevIndex.remove()
+                ul.append(dots_right)
+                ul.append(nextIndex)
+                ul.lastChild.classList.remove('active')
+                if(currentPage == 1) {
+                    ul.firstChild.classList.add('active')
+                    ul.lastChild.classList.remove('active')
+                } else {
+                    ul.firstChild.classList.remove('active')
+                }
+            } else if(leftside == 1 && rightside >= 2) {
+                ul.prepend(prevIndex)
+                ul.firstChild.classList.remove('active')
+                dots_left.remove()
+                ul.append(dots_right)
+                ul.append(nextIndex)
+            } else if(leftside >= 2 && rightside >= 2) {
+                ul.insertBefore(dots_left, ul.firstElementChild.nextElementSibling);
+                ul.append(dots_right)
+                ul.append(nextIndex)
+            } else if(leftside >= 2 && rightside == 1) {
+                dots_right.remove()
+                ul.append(nextIndex)
+                ul.lastChild.classList.remove('active')
+            } else if(leftside >= 2 && rightside == 0) {
+                nextIndex.remove()
+                ul.prepend(dots_left)
+                ul.prepend(prevIndex)
+                if(currentPage == pages) {
+                    ul.firstChild.classList.remove('active')
+                    ul.lastChild.classList.add('active')
+                } else {
+                    ul.lastChild.classList.remove('active')
+                }
+            }
+        }
+        
+        function showContent(index){
+            let window = document.querySelector('.reviews__content')
+            window.innerHTML = ''
+            startPos = (index - 1) * newsToShow 
+            endPos = parseInt(startPos) + parseInt(newsToShow) 
+            arr.slice(startPos, endPos)
+                .forEach(value => {
+                    var item = document.createElement('a');
+item.setAttribute('class', 'reviews-item');
+item.href = "#"
+item.innerHTML = `
+<div class="reviews-item__image">
+    <img src="../build/img/${value['img']}" alt="памятник Евгению Леонову"> 
+</div>
+<article class="reviews-item__text">
+    <h4>${value['title']}</h4>
+    <h5>${value['subtitle']}</h5>
+</article>
 
+`;
+document.querySelector('.reviews__content').appendChild(item);
 
-/* Устанавливаем стартовый индекс слайда по умолчанию: */
-let slideIndex = 1;
-/* Вызываем функцию, которая реализована ниже: */
-showSlides(slideIndex);
-
-/* Увеличиваем индекс на 1 — показываем следующий слайд: */
-function nextSlide() {
-    showSlides(slideIndex += 1);
-}
-
-/* Уменьшаем индекс на 1 — показываем предыдущий слайд: */
-function previousSlide() {
-    showSlides(slideIndex -= 1);  
-}
-
-/* Устанавливаем текущий слайд: */
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
-
-/* Функция перелистывания: */
-function showSlides(n) {
-    /* Обращаемся к элементам с названием класса "item", то есть к картинкам: */
-    let slides = document.getElementsByClassName("slide");
-
-
-    /* Проверяем количество слайдов: */
-    if (n > slides.length) {
-    	//console.log(slides.length)
-      slideIndex = 1
-    }
-    if (n < 1) {
-        slideIndex = slides.length
-    }
-  
-    /* Проходим по каждому слайду в цикле for: */
-    for (let slide of slides) {
-        slide.style.display = "none";
-    }
-    /* Делаем элемент блочным: */
-    slides[slideIndex - 1].style.display = "block";    
-}
-    </script>-->
-
-
-
-
-  <!--<script type="text/javascript">
-    let arr = []; 	
-    let slides = document.getElementsByClassName("slide");
-	//let slidesToShow = 4; //кол-во слайдов для показа
-	let iterator = 0; 
-	let slider = document.querySelector('.slider-container');
-
-    for (var i = 0; i < slides.length; i++) {
-		arr.push(slides[i])
-	} //получаем массив всех слайдов [0,1,2,3]
-
-
-console.log('init',iterator)
-function nextSlide() {
-	console.log('next',iterator)
-      
-    if (iterator < (slides.length - 1)){
-    	
-      iterator++ ;
-slider.append(arr[iterator])
-    } else { 
-
-      iterator = 0;
-      slider.append(arr[iterator])
-    }
-
-}
-
-function previousSlide() {
-
-	// console.error (arr[iterator])
-
-	if (iterator = 0 ) {
-		
-		iterator = slides.length - 1;
-		slider.prepend(arr[iterator])
-
-	} else if (iterator = -1) {
-		iterator = slides.length - 1;
-		slider.prepend(arr[iterator])
-	} else (iterator =  (slides.length - 1) )
-		
-		iterator--
-		slider.prepend(arr[iterator])
-
-	
-	
-
-}
-
-    </script>-->
-<!--<script type="text/javascript">
-	let arr = [];
-	let slides = document.getElementsByClassName("slide");
-	let slidesToShow = 4; //кол-во слайдов для показа
-	let iterator = 1; //кол-во слайдов для скролла
-
-	let slider = document.querySelector('.slider-container');
-
-	for (var i = 0; i < slides.length; i++) {
-		//slides[i].classList.add
-	arr.push(slides[i])
-	} //получаем массив всех слайдов [0,1,2,3]
-
-
-
-
-</script>-->
+                })
+                //console.warn('страница: ' + currentPage + ' контент: ' + value['title'])
+        }
+        
+        this.right = function () {
+            let active = ul.querySelector('.active')
+            if((items[items.length - 1] - currentPage) == 1 && (items[items.length - 1] !== pages)) { // 1 2 3 4 5, 5 - 4 = 1 кол-во элементов после active
+                items.forEach((i,value) => {
+                    items[value]++
+                        myArray[value].innerHTML = items[value]
+                })
+                currentPage++
+            } else {
+                if(active.nextElementSibling !== null) {
+                    active.classList.remove('active')
+                    active.nextElementSibling.classList.add('active')
+                    currentPage++
+                }
+            }
+            setHelpers()
+            showContent(currentPage)
+        } //right
+        this.left = function (){
+            let active = ul.querySelector('.active')
+            if((items[1] - currentPage) == 0 && (items[0] !== 1)) { // 1 2 3 4 5, 5 - 4 = 1 кол-во элементов после active
+                items.forEach((i,value) => {
+                    items[value]--
+                        myArray[value].innerHTML = items[value]
+                })
+                currentPage--
+            } else {
+                if((active.previousElementSibling !== null) && !(isNaN(active.previousElementSibling.innerHTML))) {
+                    active.previousElementSibling.classList.add('active')
+                    active.classList.remove('active')
+                    currentPage--
+                }
+            }
+            setHelpers()
+            showContent(currentPage)
+        } //left
+        }
+        const pagination = new paginationCustom('.pagination-list', 5, 4, news)
+        
+document.querySelector('.pagination__left-arrow').addEventListener('click', () => {
+    pagination.left()
+})
+document.querySelector('.pagination__right-arrow').addEventListener('click', () => {
+    pagination.right()
+})   
+        </script> 
 <script type="text/javascript">
 	let arr=[];
 	let arrCounter = [];
@@ -443,12 +464,15 @@ function previousSlide() {
 	console.log (arrCounter[0] +' ' +arrCounter[1])
 }
 let list = document.querySelector('.pagination-list')
-var s = list.querySelectorAll('li>a');
-s.forEach(el => el.addEventListener('click', function(e){ 
-         console.log(el)
-         list.querySelector('li>a.active').classList.remove('active');
-         el.classList.add('active');
+var s = list.querySelectorAll('li.page');
 
+s.forEach(el => el.addEventListener('click', (evt) => { 
+
+    console.log(el)
+         list.querySelector('li.active').classList.remove('active');
+         el.classList.add('active');
+        console.log(el) 
+console.log(el.classList.contains('first'))
 }
  )         // e.target.addClass('active')
 )
