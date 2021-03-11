@@ -219,14 +219,14 @@
         let pages = Math.ceil(arr.length / newsToShow);
         let currentPage = 1;
         let ul = document.querySelector(wrap)
-        let prevIndex = document.createElement('li')
-        prevIndex.innerHTML = '1'
-        let dots_left = document.createElement('li')
-        dots_left.innerHTML = '...'
-        let dots_right = document.createElement('li')
-        dots_right.innerHTML = '...'
-        let nextIndex = document.createElement('li')
-        nextIndex.innerHTML = pages
+        let prevIndex = document.createElement('a')
+        prevIndex.innerHTML = '<li>1</li>'
+        let dots_left = document.createElement('a')
+        dots_left.innerHTML = '<li>...</li>'
+        let dots_right = document.createElement('a')
+        dots_right.innerHTML = '<li>...</li>'
+        let nextIndex = document.createElement('a')
+        nextIndex.innerHTML = `<li>${pages}</li>`
         
         function setStart() {
             items = []
@@ -238,8 +238,8 @@
                 }
             } //end for
             items.forEach(value => {
-                    var li = document.createElement('li')
-                    li.innerHTML = value 
+                    var li = document.createElement('a')
+                    li.innerHTML = `<li>${value}</li>` 
                     ul.append(li)
                 })
             currentPage = 1
@@ -251,29 +251,42 @@
         
         setStart()
         let myArray = Array.from(ul.childNodes)
+        console.warn(myArray)
+    
         ul.firstChild.classList.add('active')
-        ul.addEventListener('click', (e) => {
-            if(e.target !== ul && !isNaN(e.target.innerHTML) && !e.target.classList.contains('.active')) {
+        ul.addEventListener('click', function(e) {
+           // e.stopPropagation()
+           console.log(e.target.closest('a'))
+          //  console.log(e.target.closest('a').classList)
+          //  if( e.target !== ul && !isNaN(e.target.innerHTML) && !e.target.classList.contains('.active')) {
+            if( e.target.closest('a') && !e.target.closest('a').classList.contains('.active') && !isNaN(e.target.innerText)){
+               
                 ul.querySelector('.active').classList.remove('active')
-                e.target.classList.add('active')
-                currentPage = e.target.innerHTML
+                e.target.closest('a').classList.add('active')
+                console.log(e.target.closest('a'))
+                currentPage = e.target.closest('a').innerText
                 showContent(currentPage)
                 //let currentEl = ul.querySelector('.active')
-                if(items[items.length - 1] - currentPage == 0 && items[items.length - 1] < pages) { // right nums +1  
+                if(items[items.length - 1] - currentPage == 0 && items[items.length - 1] < pages) { // right nums +1 
+                  //  console.log(e.target.closest('a')) 
+                    e.target.closest('a').previousElementSibling.classList.add('active') 
+                    e.target.closest('a').classList.remove('active')
                     items.forEach((i,value) => {
-                        console.log(i , value)
                             items[value]++
-                                myArray[value].innerHTML = items[value]
+                            console.warn(items[value])
+                                myArray[value].innerHTML = `<li>${items[value]}</li>`
+                                console.log(myArray)
+                                console.log(items)
                         }) //end foreach
-                    e.target.classList.remove('active')
-                    e.target.previousElementSibling.classList.add('active') 
+                        console.log(e.target)
                 } else if(items[0] - currentPage == 0 && items[0] > 1) { // left nums +1
+                    e.target.closest('a').classList.remove('active')
+                    e.target.closest('a').nextElementSibling.classList.add('active') // if prev not null
                     items.forEach((i,value) => {
                             items[value]--
-                                myArray[value].innerHTML = items[value]
+                                myArray[value].innerHTML =  `<li>${items[value]}</li>`
                         }) //end foreach
-                    e.target.classList.remove('active')
-                    e.target.nextElementSibling.classList.add('active') // if prev not null
+
                 } else if(e.target.innerHTML == pages) {
                     items = []
                     var pagesStartFrom = pages - pagesToShow+ 1 // pages start from 
@@ -282,8 +295,8 @@
                     } //end for
                     ul.innerHTML = ''
                     items.forEach((i,value) => { 
-                        var li = document.createElement('li')
-                        li.innerHTML = i
+                        var li = document.createElement('a')
+                        li.innerHTML = `<li>${i}</li>`
                         ul.append(li)
                     })
                     currentPage = pages
@@ -296,8 +309,8 @@
                     } //end for
                     ul.innerHTML = ''
                     items.forEach((i,value) => {
-                        let li = document.createElement('li')
-                        li.innerHTML = i
+                        let li = document.createElement('a')
+                        li.innerHTML = `<li>${i}</li>`
                         ul.append(li)
                     })
                     currentPage = 1
@@ -350,6 +363,7 @@
         }
         
         function showContent(index){
+            console.log(index)
             let window = document.querySelector('.reviews__content')
             window.innerHTML = ''
             startPos = (index - 1) * newsToShow 
@@ -380,7 +394,9 @@ document.querySelector('.reviews__content').appendChild(item);
             if((items[items.length - 1] - currentPage) == 1 && (items[items.length - 1] !== pages)) { // 1 2 3 4 5, 5 - 4 = 1 кол-во элементов после active
                 items.forEach((i,value) => {
                     items[value]++
-                        myArray[value].innerHTML = items[value]
+                    
+                        myArray[value].innerHTML = `<li>${items[value]}</li>`
+                        console.log(myArray)
                 })
                 currentPage++
             } else {
@@ -394,11 +410,12 @@ document.querySelector('.reviews__content').appendChild(item);
             showContent(currentPage)
         } //right
         this.left = function (){
+            
             let active = ul.querySelector('.active')
             if((items[1] - currentPage) == 0 && (items[0] !== 1)) { // 1 2 3 4 5, 5 - 4 = 1 кол-во элементов после active
                 items.forEach((i,value) => {
                     items[value]--
-                        myArray[value].innerHTML = items[value]
+                        myArray[value].innerHTML = `<li>${items[value]}</li>`
                 })
                 currentPage--
             } else {
