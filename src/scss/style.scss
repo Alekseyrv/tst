@@ -84,6 +84,7 @@ a {
 	& ul {
 		padding-left: 0;
 		margin: 0;
+		padding: 5px 0px 5px 0px;
 	}
 
 	& .pagination__wrapper {
@@ -100,6 +101,8 @@ a {
 	
 			& li {
 				display: inline;
+				margin: 15px;
+				cursor: pointer;
 	
 				& a {
 					float: left;
@@ -111,24 +114,21 @@ a {
 				}
 				
 			}
-			& .active > a{
+			& .active {
 					position: relative;
 					color: $color_black;
 					padding-bottom: 11px;
 					font-size: 20px;
 					font-weight: bold;
 					line-height: 14px;
+					padding-bottom: 7px;
+    				box-sizing: border-box;
+    				padding-left: 2px;
+    				padding-right: 2px;
+    				border-bottom: 3px solid $color_orange;
 
 				}
-				& .active > a:after {
-					content: '';
-					position: absolute;
-					width: 13px;
-					height: 3px;
-					bottom: 0;
-					left: 11px;
-					background-color: $color_orange;
-				}
+
 		}
 	}
 }
