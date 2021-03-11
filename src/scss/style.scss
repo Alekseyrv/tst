@@ -98,20 +98,13 @@ a {
 
 		& .pagination-list{
 			display: inline-block;
-	
+			& a {
+				cursor: pointer;
+			}
 			& li {
 				display: inline;
 				margin: 15px;
-				cursor: pointer;
 	
-				& a {
-					float: left;
-					padding: 4px 12px;
-					text-decoration: none;
-					color: $color_ltgray;
-					font-size: 15px;
-
-				}
 				
 			}
 			& .active {
@@ -283,7 +276,7 @@ a {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				width: 109px;
+				width: 109px; 
 				height: 31px;
 				background: rgba(0, 0, 0, 0.3);
 				border: 1px solid #FFFFFF;
@@ -299,7 +292,7 @@ a {
 					background: rgba(112, 112, 112, 0.3);
 					transition: background 0.3s ease, color 0.2s linear;
 				}
-			}
+			}  
 		}
 	}
 }
@@ -312,5 +305,4 @@ a {
 	opacity: 1;
 	}
 }
-
 
