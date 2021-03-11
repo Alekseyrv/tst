@@ -259,7 +259,7 @@
            console.log(e.target.closest('a'))
           //  console.log(e.target.closest('a').classList)
           //  if( e.target !== ul && !isNaN(e.target.innerHTML) && !e.target.classList.contains('.active')) {
-            if( e.target.closest('a') && !e.target.closest('a').classList.contains('.active') && !isNaN(e.target.innerText)){
+            if( e.target !== ul && e.target.closest('a') && !e.target.closest('a').classList.contains('.active') && !isNaN(e.target.innerText)){
                
                 ul.querySelector('.active').classList.remove('active')
                 e.target.closest('a').classList.add('active')
@@ -287,7 +287,7 @@
                                 myArray[value].innerHTML =  `<li>${items[value]}</li>`
                         }) //end foreach
 
-                } else if(e.target.innerHTML == pages) {
+                } else if(e.target.innerText == pages) {
                     items = []
                     var pagesStartFrom = pages - pagesToShow+ 1 // pages start from 
                     for(let i = pagesStartFrom; i <= pages; i++) { 
@@ -301,7 +301,7 @@
                     })
                     currentPage = pages
                     myArray = Array.from(ul.childNodes)
-                } else if(e.target.innerHTML == 1) { // click firstchild (1)
+                } else if(e.target.innerText == 1) { // click firstchild (1)
                     items = []
                     var pagesStartFrom = 1 // pages start from 1st
                     for(let i = pagesStartFrom; i <= pagesToShow; i++) { 
@@ -419,7 +419,7 @@ document.querySelector('.reviews__content').appendChild(item);
                 })
                 currentPage--
             } else {
-                if((active.previousElementSibling !== null) && !(isNaN(active.previousElementSibling.innerHTML))) {
+                if((active.previousElementSibling !== null) && !(isNaN(active.previousElementSibling.innerText))) {
                     active.previousElementSibling.classList.add('active')
                     active.classList.remove('active')
                     currentPage--
